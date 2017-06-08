@@ -1,0 +1,198 @@
+swagger: "2.0"
+info:
+  description: "Welcome to the swapi, the Star Wars API! This documentation should help you familiarise yourself with the resources available and how to consume them with HTTP requests. If you're after a native helper library then I suggest you scroll down and check out what's available. Read through the getting started section before you dive in. Most of your problems should be solved just by reading through it."
+  version: "1.0.0"
+  title: "SWAPI"
+host: "petstore.swagger.io"
+basePath: "/v2"
+tags:
+- name: "Films"
+  description: "A Film resource is a single film."
+  externalDocs:
+    description: "Find out more"
+    url: "http://swapi.co/api/films/1/"
+schemes:
+- "http"
+paths:
+  /films/:
+    get:
+      tags:
+      - "Films"
+      summary: "get all the film resources"
+      description: ""
+      operationId: "get-all-the-films"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Schema information for returned response"
+        required: true
+        schema:
+          $ref: "#/definitions/Films"
+      - name: "title"
+        in: "query"
+        description: "Search field"
+        required: true
+        type: "string"
+        items:
+          type: "string"
+        collectionFormat: "multi"
+      responses:
+        200:
+          description: "OK"
+  /films/:id/:
+    get:
+      tags:
+      - "Films"
+      summary: "get a specific film resource"
+      description: ""
+      operationId: "get-a-film"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Schema information for returned response"
+        required: true
+        schema:
+          $ref: "#/definitions/Films"
+      - name: "title"
+        in: "query"
+        description: "Search field"
+        required: true
+        type: "string"
+        items:
+          type: "string"
+        collectionFormat: "multi"
+      responses:
+        200:
+          description: "OK"
+  /films/schema/:
+    get:
+      tags:
+      - "Films"
+      summary: "view the JSON schema for this resource"
+      description: ""
+      operationId: "get-json-schema"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Schema information for returned response"
+        required: true
+        schema:
+          $ref: "#/definitions/Films"
+      - name: "title"
+        in: "query"
+        description: "Search field"
+        required: true
+        type: "string"
+        items:
+          type: "string"
+        collectionFormat: "multi"
+      responses:
+        200:
+          description: "OK"
+      security:
+      - petstore_auth:
+        - "write:pets"
+        - "read:pets"
+securityDefinitions:
+  petstore_auth:
+    type: "oauth2"
+    authorizationUrl: "http://petstore.swagger.io/oauth/dialog"
+    flow: "implicit"
+    scopes:
+      write:pets: "modify pets in your account"
+      read:pets: "read your pets"
+  api_key:
+    type: "apiKey"
+    name: "api_key"
+    in: "header"
+definitions:
+  Films:
+    type: "object"
+    properties:
+      title:
+        type: "string"
+        description: "The title of this film"
+        example: "A New Hope"
+      episode_id:
+        type: "integer"
+        description: "The episode number of this film."
+        example: 4
+      opening_crawl:
+        type: "string"
+        description: "The opening paragraphs at the beginning of this film."
+        example: "It is a period of civil war.\n\nRebel spaceships, striking\n\nfrom a hidden base, have won\n\ntheir first victory against\n\nthe evil Galactic Empire.\n\n\n\nDuring the battle, Rebel\n\nspies managed to steal secret\r\nplans to the Empire's\n\nultimate weapon, the DEATH\n\nSTAR, an armored space\n\nstation with enough power\n\nto destroy an entire planet.\n\n\n\nPursued by the Empire's\n\nsinister agents, Princess\n\nLeia races home aboard her\n\nstarship, custodian of the\n\nstolen plans that can save her\n\npeople and restore\n\nfreedom to the galaxy...."
+      director:
+        type: "string"
+        description: "George Lucas"
+        example: "A New Hope"
+      producer:
+        type: "string"
+        description: "The name(s) of the producer(s) of this film. Comma separated."
+        example: "Gary Kurtz, Rick McCallum"
+      release_date:
+        type: "string"
+        description: "The ISO 8601 date format of film release at original creator country."
+        example: "1977-05-25"
+      species:
+        type: "array"
+        description: "An array of species resource URLs that are in this film."
+        example: "- 'http://swapi.co/api/species/1/'
+                  - ...
+                  "
+      starships:
+        type: "array"
+        description: "An array of starship resource URLs that are in this film."
+        example: -'http://swapi.co/api/starships/2/'
+                 - ...
+                 
+      vehicles:
+        type: "array"
+        description: "An array of vehicle resource URLs that are in this film."
+        example: -'http://swapi.co/api/vehicles/4/'
+                 - ...
+                 
+      characters:
+        type: "array"
+        description: "An array of people resource URLs that are in this film."
+        example: -'http://swapi.co/api/people/1/'
+                 - ...
+                 
+      planets:
+        type: "array"
+        description: "An array of planet resource URLs that are in this film."
+        example: -'http://swapi.co/api/planets/1/'
+                 - ...
+                 
+      url:
+        type: "string"
+        description: "the hypermedia URL of this resource."
+        example: "http://swapi.co/api/films/1/"
+      created:
+        type: "string"
+        description: "the ISO 8601 date format of the time that this resource was created."
+        example: "2014-12-10T14:23:31.880000Z"
+      edited:
+        type: "string"
+        description: "the ISO 8601 date format of the time that this resource was edited."
+        example: "2014-12-12T11:24:39.858000Z"
+        
+    xml:
+      name: "Films"
