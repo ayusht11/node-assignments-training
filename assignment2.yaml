@@ -122,41 +122,31 @@ definitions:
         items:
           type: "string"
         description: "An array of species resource URLs that are in this film."
-        example: "- 'http://swapi.co/api/species/1/'
-                  - ...
-                  "
+        example: ["http://swapi.co/api/species/1/"]
       starships:
         type: "array"
         items:
           type: "string"
         description: "An array of starship resource URLs that are in this film."
-        example: -'http://swapi.co/api/starships/2/'
-                 - ...
-                 
+        example: -["http://swapi.co/api/starships/2/"]
       vehicles:
         type: "array"
         items:
           type: "string"
         description: "An array of vehicle resource URLs that are in this film."
-        example: -'http://swapi.co/api/vehicles/4/'
-                 - ...
-                 
+        example: -["http://swapi.co/api/vehicles/4/"]
       characters:
         type: "array"
         items:
           type: "string"
         description: "An array of people resource URLs that are in this film."
-        example: -'http://swapi.co/api/people/1/'
-                 - ...
-                 
+        example: -["http://swapi.co/api/people/1/"]
       planets:
         type: "array"
         items:
           type: "string"
         description: "An array of planet resource URLs that are in this film."
-        example: -'http://swapi.co/api/planets/1/'
-                 - ...
-                 
+        example: -["http://swapi.co/api/planets/1/"]
       url:
         type: "string"
         description: "the hypermedia URL of this resource."
@@ -169,3 +159,4 @@ definitions:
         type: "string"
         description: "the ISO 8601 date format of the time that this resource was edited."
         example: "2014-12-12T11:24:39.858000Z"
+        
