@@ -19,7 +19,6 @@ paths:
       tags:
       - "Films"
       summary: "get all the film resources"
-      description: ""
       operationId: "get-all-the-films"
       consumes:
       - "application/json"
@@ -37,8 +36,6 @@ paths:
         description: "Search field"
         required: true
         type: "string"
-        items:
-          type: "string"
         collectionFormat: "multi"
       responses:
         200:
@@ -48,7 +45,6 @@ paths:
       tags:
       - "Films"
       summary: "get a specific film resource"
-      description: ""
       operationId: "get-a-film"
       consumes:
       - "application/json"
@@ -66,8 +62,6 @@ paths:
         description: "Search field"
         required: true
         type: "string"
-        items:
-          type: "string"
         collectionFormat: "multi"
       responses:
         200:
@@ -95,8 +89,6 @@ paths:
         description: "Search field"
         required: true
         type: "string"
-        items:
-          type: "string"
         collectionFormat: "multi"
       responses:
         200:
@@ -147,30 +139,40 @@ definitions:
         example: "1977-05-25"
       species:
         type: "array"
+        items:
+          type: "string"
         description: "An array of species resource URLs that are in this film."
         example: "- 'http://swapi.co/api/species/1/'
                   - ...
                   "
       starships:
         type: "array"
+        items:
+          type: "string"
         description: "An array of starship resource URLs that are in this film."
         example: -'http://swapi.co/api/starships/2/'
                  - ...
                  
       vehicles:
         type: "array"
+        items:
+          type: "string"
         description: "An array of vehicle resource URLs that are in this film."
         example: -'http://swapi.co/api/vehicles/4/'
                  - ...
                  
       characters:
         type: "array"
+        items:
+          type: "string"
         description: "An array of people resource URLs that are in this film."
         example: -'http://swapi.co/api/people/1/'
                  - ...
                  
       planets:
         type: "array"
+        items:
+          type: "string"
         description: "An array of planet resource URLs that are in this film."
         example: -'http://swapi.co/api/planets/1/'
                  - ...
