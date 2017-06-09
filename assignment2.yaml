@@ -3,8 +3,8 @@ info:
   description: "Welcome to the swapi, the Star Wars API! This documentation should help you familiarise yourself with the resources available and how to consume them with HTTP requests. If you're after a native helper library then I suggest you scroll down and check out what's available. Read through the getting started section before you dive in. Most of your problems should be solved just by reading through it."
   version: "1.0.0"
   title: "SWAPI"
-host: "petstore.swagger.io"
-basePath: "/v2"
+host: "swapi.co"
+basePath: "/api"
 tags:
 - name: "Films"
   description: "A Film resource is a single film."
@@ -23,10 +23,8 @@ paths:
       operationId: "get-all-the-films"
       consumes:
       - "application/json"
-      - "application/xml"
       produces:
       - "application/json"
-      - "application/xml"
       parameters:
       - in: "body"
         name: "body"
@@ -54,10 +52,8 @@ paths:
       operationId: "get-a-film"
       consumes:
       - "application/json"
-      - "application/xml"
       produces:
       - "application/json"
-      - "application/xml"
       parameters:
       - in: "body"
         name: "body"
@@ -85,10 +81,8 @@ paths:
       operationId: "get-json-schema"
       consumes:
       - "application/json"
-      - "application/xml"
       produces:
       - "application/json"
-      - "application/xml"
       parameters:
       - in: "body"
         name: "body"
@@ -193,6 +187,3 @@ definitions:
         type: "string"
         description: "the ISO 8601 date format of the time that this resource was edited."
         example: "2014-12-12T11:24:39.858000Z"
-        
-    xml:
-      name: "Films"
