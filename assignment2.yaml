@@ -19,7 +19,6 @@ paths:
       tags:
       - "Films"
       summary: "get all the film resources"
-      operationId: "get-all-the-films"
       consumes:
       - "application/json"
       produces:
@@ -45,7 +44,6 @@ paths:
       tags:
       - "Films"
       summary: "get a specific film resource"
-      operationId: "get-a-film"
       consumes:
       - "application/json"
       produces:
@@ -71,8 +69,6 @@ paths:
       tags:
       - "Films"
       summary: "view the JSON schema for this resource"
-      description: ""
-      operationId: "get-json-schema"
       consumes:
       - "application/json"
       produces:
