@@ -1,8 +1,7 @@
-let files = ["./f1","./f2","./f3"], i = 0;
-fs = require('fs');
-function reader(files) {
+const fs = require('fs');
+function reader(file) {
   return new Promise(function(resolve, reject) {
-    fs.readFile(files[i], 'utf8' , function (err,data) {
+    fs.readFile(file, 'utf8' , function (err,data) {
       if (err) {
       reject(err);
     }
@@ -11,17 +10,15 @@ function reader(files) {
   });
 }
 
-reader(files).then(function(fromResolve) {
-  console.log(fromResolve);
+reader("./f1").then(function(result) {
+  console.log(result);
   console.log("===========================");
-  i++;
-  return reader(files);
-}).then(function(fromResolve) {
-  console.log(fromResolve);
+  return reader("./f2");
+}).then(function(result) {
+  console.log(result);
   console.log("===========================")
-  i++;
-  return reader(files);
-}).then(function(fromResolve) {
-  console.log(fromResolve);
+  return reader("./f3");
+}).then(function(result) {
+  console.log(result);
   console.log("===========================");
 });
