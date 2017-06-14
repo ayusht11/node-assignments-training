@@ -4,7 +4,7 @@ info:
   version: ""
   title: "SWAPI"
 host: "swapi.co"
-basePath: "/api"
+basePath: "/documentation"
 tags:
 - name: "Films"
   description: "A Film resource is a single film."
@@ -20,6 +20,12 @@ paths:
       - "application/json"
       produces:
       - "application/json"
+      parameters:
+      - name: ":id"
+        in: "query"
+        description: "id of the film to be returned"
+        required: true
+        type: "integer"
       responses:
         200:
           description: "OK"
