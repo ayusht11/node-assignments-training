@@ -6,19 +6,20 @@ function reader(file) {
       reject(err);
     }
     resolve(data);
+    console.log("===========================");
     })
   });
 }
 
 reader("./f1").then(function(result) {
   console.log(result);
-  console.log("===========================");
   return reader("./f2");
-}).then(function(result) {
-  console.log(result);
-  console.log("===========================")
-  return reader("./f3");
-}).then(function(result) {
-  console.log(result);
-  console.log("===========================");
+})
+ .then(function(result) {
+    console.log(result);
+    return reader("./f3");
+})
+ .then(function(result) {
+    console.log(result);
+    console.log("===========================");
 });
