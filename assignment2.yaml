@@ -1,16 +1,13 @@
 swagger: "2.0"
 info:
   description: "Welcome to the swapi, the Star Wars API! This documentation should help you familiarise yourself with the resources available and how to consume them with HTTP requests. If you're after a native helper library then I suggest you scroll down and check out what's available. Read through the getting started section before you dive in. Most of your problems should be solved just by reading through it."
-  version: "1.0.0"
+  version: ""
   title: "SWAPI"
 host: "swapi.co"
 basePath: "/api"
 tags:
 - name: "Films"
   description: "A Film resource is a single film."
-  externalDocs:
-    description: "Find out more"
-    url: "http://swapi.co/api/films/1/"
 schemes:
 - "http"
 paths:
@@ -23,23 +20,12 @@ paths:
       - "application/json"
       produces:
       - "application/json"
-      parameters:
-      - in: "body"
-        name: "body"
-        description: "Schema information for returned response"
-        required: true
-        schema:
-          $ref: "#/definitions/Films"
-      - name: "title"
-        in: "query"
-        description: "Search field"
-        required: true
-        type: "string"
-        collectionFormat: "multi"
       responses:
         200:
           description: "OK"
-  /films/:id/:
+          schema:
+            $ref: "#/definitions/Films"
+  /films/{:id}/:
     get:
       tags:
       - "Films"
@@ -49,15 +35,16 @@ paths:
       produces:
       - "application/json"
       parameters:
-      - in: "body"
-        name: "body"
-        description: "Schema information for returned response"
+      - name: ":id"
+        in: "path"
+        description: "id of the film to be returned"
         required: true
-        schema:
-          $ref: "#/definitions/Films"
+        type: "integer"
       responses:
         200:
           description: "OK"
+          schema:
+            $ref: "#/definitions/Films"
   /films/schema/:
     get:
       tags:
@@ -67,16 +54,11 @@ paths:
       - "application/json"
       produces:
       - "application/json"
-      parameters:
-      - in: "body"
-        name: "body"
-        description: "Schema information for returned response"
-        required: true
-        schema:
-          $ref: "#/definitions/Films"
       responses:
         200:
           description: "OK"
+          schema:
+            $ref: "#/definitions/Films"
 definitions:
   Films:
     type: "object"
