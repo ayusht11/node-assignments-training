@@ -15,8 +15,8 @@ app.get('/clients', function (req, res) {
    .auth('fc96dc9ded698bbfbfb975409a864a42', 'ayusht11', false);
 });
 
-app.get('/clients/:client', function (req, res) {
-  request('https://api.createsend.com/api/v3.1/clients/'+req.params.client+'.json', function (err, response, data) {
+app.get('/clients/:clientid', function (req, res) {
+  request('https://api.createsend.com/api/v3.1/clients/'+req.params.clientid+'.json', function (err, response, data) {
     if(err) {
       res.send(err);
     }
@@ -25,8 +25,8 @@ app.get('/clients/:client', function (req, res) {
    .auth('fc96dc9ded698bbfbfb975409a864a42', 'ayusht11', false);
 });
 
-app.get('/clients/:client/lists', function (req, res) {
-  request('https://api.createsend.com/api/v3.1/clients/'+req.params.client+'/lists.json', function (err, response, data) {
+app.get('/clients/:clientid/lists', function (req, res) {
+  request('https://api.createsend.com/api/v3.1/clients/'+req.params.clientid+'/lists.json', function (err, response, data) {
     if(err) {
       res.send(err);
     }
