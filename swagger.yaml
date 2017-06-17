@@ -1,0 +1,104 @@
+swagger: "2.0"
+info:
+  description: "The Search API is optimized to help you find the specific item you're looking for (e.g., a specific user, a specific file in a repository, etc.). Think of it the way you think of performing a search on Google. It's designed to help you find the one result you're looking for (or maybe the few results you're looking for). Just like searching on Google, you sometimes want to see a few pages of search results so that you can find the item that best meets your needs. To satisfy that need, the GitHub Search API provides up to 1,000 results for each search."
+  version: ""
+  title: "Search"
+host: "developer.github.com"
+basePath: "/v3/documentation"
+tags:
+- name: "Search repositories"
+  description: "Find repositories via various criteria. This method returns up to 100 results per page."
+schemes:
+- "https"
+paths:
+  /search/repositories:
+    get:
+      tags:
+      - "Search repositories"
+      summary: "Find repositories via various criteria. This method returns up to 100 results per page."
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "q"
+        in: "query"
+        description: "Search field"
+        required: false
+        type: "string"
+        collectionFormat: "multi"
+        items:
+          type: "string"
+          enum:
+          - "author"
+          - "committer"
+          - "author-name"
+          - "committer-name"
+          - "author-email"
+      - name: "sort"
+        in: "query"
+        description: "Search field"
+        required: false
+        type: "string"
+        collectionFormat: "multi"
+        default: "results are sorted by best match."
+      - name: "order"
+        in: "query"
+        description: "Search field"
+        required: false
+        type: "string"
+        default: "desc"
+        items:
+          type: "string"
+          enum:
+          - "asc"
+          - "dsc"
+        collectionFormat: "multi"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/SearchResult"
+definitions:
+  SearchResult:
+    type: "object"
+    properties:
+      total_count:
+        type: "integer"
+        example: 40
+      incomplete_results:
+        type: "boolean"
+        example: false
+      items:
+        type: "array"
+        example: "-[ id: 3081286
+                    name: Tetris
+                    full_name: dtrupenn/Tetris
+                    owner:
+                      login: dtrupenn
+                      id: 872147
+                      avatar_url: 'https://secure.gravatar.com/avatar/e7956084e75f239de85d3a31bc172ace?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png'
+                      gravatar_id: ''
+                      url: 'https://api.github.com/users/dtrupenn'
+                      received_events_url: 'https://api.github.com/users/dtrupenn/received_events'
+                      type: User
+                    private: false
+                    html_url: 'https://github.com/dtrupenn/Tetris'
+                    description: A C implementation of Tetris using Pennsim through LC4
+                    fork: false
+                    url: 'https://api.github.com/repos/dtrupenn/Tetris'
+                    created_at: '2012-01-01T00:31:50Z'
+                    updated_at: '2013-01-05T17:58:47Z'
+                    pushed_at: '2012-01-01T00:37:02Z'
+                    homepage: ''
+                    size: 524
+                    stargazers_count: 1
+                    watchers_count: 1
+                    language: Assembly
+                    forks_count: 0
+                    open_issues_count: 0
+                    master_branch: master
+                    default_branch: master
+                    score: 10.309712
+                  ]"
+    
