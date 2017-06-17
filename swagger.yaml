@@ -23,7 +23,7 @@ paths:
       parameters:
       - name: "q"
         in: "query"
-        description: "Search field"
+        description: "Sort field"
         required: false
         type: "string"
         collectionFormat: "multi"
@@ -37,7 +37,7 @@ paths:
           - "author-email"
       - name: "sort"
         in: "query"
-        description: "Search field"
+        description: "Sort field"
         required: false
         type: "string"
         collectionFormat: "multi"
