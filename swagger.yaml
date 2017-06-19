@@ -4,10 +4,13 @@ info:
   version: ""
   title: "Search"
 host: "developer.github.com"
-basePath: "/v3/documentation"
+basePath: "/v3/api"
 tags:
 - name: "Search repositories"
   description: "Find repositories via various criteria. This method returns up to 100 results per page."
+  externalDocs:
+    description: "find more information here"
+    url: "https://developer.github.com/v3/search/#search-repositories" 
 schemes:
 - "https"
 paths:
