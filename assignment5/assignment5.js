@@ -25,6 +25,6 @@ fileRead("./f1")
     console.log(result);
     console.log("===========================");
   })
-  .catch(function (e) {
-   console.log(e);
+ .catch(function (e) {
+    console.log(e);
   });
