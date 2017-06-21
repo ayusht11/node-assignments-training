@@ -8,8 +8,10 @@ deleteClient = function () {
       method: "DELETE",
       },
       function (err, response, data) {
-        if(err)
-          {res.send(err);}
+        if(err) {
+          res.send(err);
+          return(err);
+        }
         res.json(data);
       })
        .auth('fc96dc9ded698bbfbfb975409a864a42', 'ayusht11', false);

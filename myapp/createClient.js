@@ -14,6 +14,7 @@ createClient = function () {
       function (err, response, data) {
         if(err) {
           res.send(err);
+          return(err);
         }
         res.json(data);
       })

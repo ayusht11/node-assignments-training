@@ -6,6 +6,7 @@ const getClients = function () {
     request('https://api.createsend.com/api/v3.1/clients.json', function (err, response, data) {
       if(err) {
         res.send(err);
+        return(err);
       }
       res.json(data); 
     })
