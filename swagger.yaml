@@ -26,7 +26,7 @@ paths:
       parameters:
       - name: "q"
         in: "query"
-        description: "Sort field"
+        description: "Search field"
         required: false
         type: "string"
         collectionFormat: "multi"
@@ -47,7 +47,7 @@ paths:
         default: "results are sorted by best match."
       - name: "order"
         in: "query"
-        description: "Search field"
+        description: "Order field"
         required: false
         type: "string"
         default: "desc"
