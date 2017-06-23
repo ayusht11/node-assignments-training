@@ -1,10 +1,8 @@
 const request = require('request');
 const app = require('./app.js');
 
-const listenPort = function () { 
-  app.listen(3000, function () {
+module.exports.startServer = () => { 
+  app.listen(3000, () => {
     console.log('Example app listening on port 3000!')
   });
 }
-
-module.exports = listenPort;

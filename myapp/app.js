@@ -1,16 +1,21 @@
 const express = require('express');
 const app = module.exports = express();
 
-const getClients = require('./getClients.js'); 
-const getClientInfo = require('./getClientInfo.js');
-const getClientLists = require('./getClientLists.js');
-const createClient = require('./createClient.js');
-const deleteClient = require('./deleteClient.js');
-const listenPort = require('./listenPort.js'); 
+const Clients = require('./getClients.js'); 
+const ClientInfo = require('./getClientInfo.js');
+const ClientLists = require('./getClientLists.js');
+const Create = require('./createClient.js');
+const Delete = require('./deleteClient.js');
+const Port = require('./listenPort.js'); 
 
-getClients();
-getClientInfo();
-getClientLists();
-createClient();
-deleteClient();
-listenPort();
+Clients.getClients();
+ClientInfo.getClientInfo();
+ClientLists.getClientLists();
+Create.createClient();
+Delete.deleteClient();
+
+app.use((req, res) => {
+  res.status(404).send({url: req.originalUrl + ' not found'})
+});
+
+Port.startServer();
