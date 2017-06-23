@@ -1,10 +1,11 @@
 const fs = require('fs');
 
 function fileRead(file) {
-  return new Promise(function (resolve, reject) {
-    fs.readFile(file, 'utf8', function (err, data) {
+  return new Promise((resolve, reject) => {
+    fs.readFile(file, 'utf8',(err, data) => {
       if (err) {
-        console.log(err);
+        reject(err);
+        return(err);
       }
       resolve(data);
       console.log("===========================");
@@ -13,18 +14,18 @@ function fileRead(file) {
 }
 
 fileRead("./f1")
- .then(function (result) {
+ .then((result) => {
     console.log(result);
     return fileRead("./f2");
   })
- .then(function (result) {
+ .then((result) => {
     console.log(result);
     return fileRead("./f3");
   })
- .then(function (result) {
+ .then((result) => {
     console.log(result);
     console.log("===========================");
   })
- .catch(function (e) {
-    console.log(e);
+ .catch((errorOnFileRead) => {
+    console.log(errorOnFileRead);
   });
