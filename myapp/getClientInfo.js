@@ -3,7 +3,7 @@ const app = require('./app.js');
 
 module.exports.getClientInfo = () => { 
   app.get('/clients/:clientid', (req, res) => {
-    request('https://api.createsend.com/api/v3.1/clients/${req.params.clientid}.json', 
+    request(`https://api.createsend.com/api/v3.1/clients/${req.params.clientid}.json`, 
       (err, response, data) => {
         if(err) {          
           return res.status(400).send({url: req.originalUrl + ' Bad Request', error : err});

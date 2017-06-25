@@ -1,3 +1,4 @@
+const babel = require("babel-core");
 const express = require('express');
 const app = module.exports = express();
 
