@@ -13,11 +13,10 @@ module.exports.createClient = () => {
     },
     (err, response, data) => {
       if(err) {
-        res.status(400).send('Bad Request!');
-        return res.send(err);
+        return res.status(400).send({url: req.originalUrl + ' Bad Request', error : err});
       }
       res.status(201).json(data);
     })
-     .auth('fc96dc9ded698bbfbfb975409a864a42', 'ayusht11', true);
+     .auth(req.header('username'),req.header('password'), false);
   });
 }
