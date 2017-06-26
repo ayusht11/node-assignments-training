@@ -13,7 +13,7 @@ module.exports.createClient = () => {
     },
     (err, response, data) => {
       if(err) {
-        return res.status(400).send({url: req.originalUrl + ' Bad Request', error : err});
+        return res.status(400).send({url: `${req.originalUrl} bad request`});
       }
       res.status(201).json(data);
     })

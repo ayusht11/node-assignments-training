@@ -9,7 +9,7 @@ module.exports.deleteClient = () => {
     },
     (err, response, data) => {
       if(err) {        
-        return res.status(400).send({url: req.originalUrl + ' Bad Request', error : err});
+        return res.status(400).send({id: `${req.params.clientid} bad request`});
       }
       res.status(204).json(data);
     })

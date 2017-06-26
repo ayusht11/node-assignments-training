@@ -6,7 +6,7 @@ module.exports.getClientInfo = () => {
     request(`https://api.createsend.com/api/v3.1/clients/${req.params.clientid}.json`, 
       (err, response, data) => {
         if(err) {          
-          return res.status(400).send({url: req.originalUrl + ' Bad Request', error : err});
+          return res.status(400).send({id: `${req.params.clientid} bad request`});
         }
         res.status(200).json(data); 
       }
