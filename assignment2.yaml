@@ -33,7 +33,9 @@ paths:
         200:
           description: "OK"
           schema:
-            $ref: "#/definitions/Films"
+            type: "array"
+            items:
+              $ref: "#/definitions/Film"
   /films/{:id}/:
     get:
       tags:
@@ -138,10 +140,6 @@ definitions:
         type: "string"
         description: "the ISO 8601 date format of the time that this resource was edited."
         example: "2014-12-12T11:24:39.858000Z"
-  Films:
-    type: "array"
-    items:
-      $ref: "#/definitions/Film"  
   FilmSchema:
     type: "object"
     properties:
@@ -164,21 +162,21 @@ definitions:
           - "url"
           - "created"
           - "edited"
-          example: "- title
-                    - episode_id
-                    - opening_crawl
-                    - director
-                    - producer
-                    - release_date
-                    - characters
-                    - planets
-                    - starships
-                    - vehicles
-                    - species
-                    - url
-                    - created
-                    - edited
-                    "
+        example: "- title
+                  - episode_id
+                  - opening_crawl
+                  - director
+                  - producer
+                  - release_date
+                  - characters
+                  - planets
+                  - starships
+                  - vehicles
+                  - species
+                  - url
+                  - created
+                  - edited
+                  "
       properties:
         type: "object"
         properties:
