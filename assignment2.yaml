@@ -147,21 +147,21 @@ definitions:
         type: "array"
         items:
           type: "string"
-          enum: 
-          - "title"
-          - "episode_id"
-          - "opening_crawl"
-          - "director"
-          - "producer"
-          - "release_date"
-          - "characters"
-          - "planets"
-          - "starships"
-          - "vehicles"
-          - "species"
-          - "url"
-          - "created"
-          - "edited"
+        enum: 
+        - "title"
+        - "episode_id"
+        - "opening_crawl"
+        - "director"
+        - "producer"
+        - "release_date"
+        - "characters"
+        - "planets"
+        - "starships"
+        - "vehicles"
+        - "species"
+        - "url"
+        - "created"
+        - "edited"
         example: "- title
                   - episode_id
                   - opening_crawl
