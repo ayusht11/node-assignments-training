@@ -1,0 +1,287 @@
+swagger: "2.0"
+info:
+  description: "Welcome to the swapi, the Star Wars API! This documentation should help you familiarise yourself with the resources available and how to consume them with HTTP requests. If you're after a native helper library then I suggest you scroll down and check out what's available. Read through the getting started section before you dive in. Most of your problems should be solved just by reading through it."
+  version: ""
+  title: "SWAPI"
+host: "swapi.co"
+basePath: "/api"
+tags:
+- name: "Films"
+  description: "A Film resource is a single film."
+  externalDocs: 
+    description: "get more info here"
+    url: "http://swapi.co/documentation#films"
+schemes:
+- "http"
+paths:
+  /films/:
+    get:
+      tags:
+      - "Films"
+      summary: "get all the film resources"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "title"
+        in: "query"
+        description: "title of the film to be returned"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Film"
+  /films/{:id}/:
+    get:
+      tags:
+      - "Films"
+      summary: "get a specific film resource"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: ":id"
+        in: "path"
+        description: "id of the film to be returned"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/Film"
+  /films/schema/:
+    get:
+      tags:
+      - "Films"
+      summary: "view the JSON schema for this resource"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#definitions/FilmSchema"
+definitions:
+  Film:
+    type: "object"
+    properties:
+      title:
+        type: "string"
+        description: "The title of this film"
+        example: "A New Hope"
+      episode_id:
+        type: "integer"
+        description: "The episode number of this film."
+        example: 4
+      opening_crawl:
+        type: "string"
+        description: "The opening paragraphs at the beginning of this film."
+        example: "It is a period of civil war.\n\nRebel spaceships, striking\n\nfrom a hidden base, have won\n\ntheir first victory against\n\nthe evil Galactic Empire.\n\n\n\nDuring the battle, Rebel\n\nspies managed to steal secret\r\nplans to the Empire's\n\nultimate weapon, the DEATH\n\nSTAR, an armored space\n\nstation with enough power\n\nto destroy an entire planet.\n\n\n\nPursued by the Empire's\n\nsinister agents, Princess\n\nLeia races home aboard her\n\nstarship, custodian of the\n\nstolen plans that can save her\n\npeople and restore\n\nfreedom to the galaxy...."
+      director:
+        type: "string"
+        description: "George Lucas"
+        example: "A New Hope"
+      producer:
+        type: "string"
+        description: "The name(s) of the producer(s) of this film. Comma separated."
+        example: "Gary Kurtz, Rick McCallum"
+      release_date:
+        type: "string"
+        description: "The ISO 8601 date format of film release at original creator country."
+        example: "1977-05-25"
+      species:
+        type: "array"
+        items:
+          type: "string"
+        description: "An array of species resource URLs that are in this film."
+        example: ["http://swapi.co/api/species/1/"]
+      starships:
+        type: "array"
+        items:
+          type: "string"
+        description: "An array of starship resource URLs that are in this film."
+        example: -["http://swapi.co/api/starships/2/"]
+      vehicles:
+        type: "array"
+        items:
+          type: "string"
+        description: "An array of vehicle resource URLs that are in this film."
+        example: -["http://swapi.co/api/vehicles/4/"]
+      characters:
+        type: "array"
+        items:
+          type: "string"
+        description: "An array of people resource URLs that are in this film."
+        example: -["http://swapi.co/api/people/1/"]
+      planets:
+        type: "array"
+        items:
+          type: "string"
+        description: "An array of planet resource URLs that are in this film."
+        example: -["http://swapi.co/api/planets/1/"]
+      url:
+        type: "string"
+        description: "the hypermedia URL of this resource."
+        example: "http://swapi.co/api/films/1/"
+      created:
+        type: "string"
+        description: "the ISO 8601 date format of the time that this resource was created."
+        example: "2014-12-10T14:23:31.880000Z"
+      edited:
+        type: "string"
+        description: "the ISO 8601 date format of the time that this resource was edited."
+        example: "2014-12-12T11:24:39.858000Z"
+  FilmSchema:
+    type: "object"
+    properties:
+      required:
+        type: "array"
+        items:
+          type: "string"
+        enum: 
+        - "title"
+        - "episode_id"
+        - "opening_crawl"
+        - "director"
+        - "producer"
+        - "release_date"
+        - "characters"
+        - "planets"
+        - "starships"
+        - "vehicles"
+        - "species"
+        - "url"
+        - "created"
+        - "edited"
+        example: "- title
+                  - episode_id
+                  - opening_crawl
+                  - director
+                  - producer
+                  - release_date
+                  - characters
+                  - planets
+                  - starships
+                  - vehicles
+                  - species
+                  - url
+                  - created
+                  - edited
+                  "
+      properties:
+        type: "object"
+        properties:
+          vehicles:
+            description: "The vehicle resources featured within this film."
+            type: "array"
+            example: "description: The vehicle resources featured within this film.
+                      type: array
+                      "
+          created:  
+            format: "date-time"
+            description: "The ISO 8601 date format of the time that this resource was created."
+            type: "string"
+            example: "format: date-time
+                      description: The ISO 8601 date format of the time that this resource was created.
+                      type: string
+                      "
+          species:
+            description: "The species resources featured within this film."
+            type: "array"
+            example: "description: The species resources featured within this film.
+                      type: array
+                      "
+          planets:
+            description: "The planet resources featured within this film."
+            type: "array"
+            example: "description: The planet resources featured within this film.
+                      type: array
+                      "
+          characters:
+            description: "The people resources featured within this film."
+            type: "array"
+            example: "description: The people resources featured within this film.
+                      type: array
+                      "
+          url:  
+            format: "uri"
+            description: "The url of this resource"
+            type: "string"
+            example: "format: uri
+                      description: The url of this resource
+                      type: string
+                      "
+          episode_id:  
+            description: "The episode number of this film."
+            type: "integer"
+            example: "description: The episode number of this film.
+                      type: integer
+                      "
+          producer:  
+            description: "The producer(s) of this film."
+            type: "string"
+            example: "description: The producer(s) of this film.
+                      type: string
+                      "
+          edited: 
+            format: "date-time"
+            description: "the ISO 8601 date format of the time that this resource was edited."
+            type: "string"
+            example: "format: date-time
+                      description: the ISO 8601 date format of the time that this resource was edited.
+                      type: string
+                      "
+          release_date: 
+            format: "date"
+            description: "The release date at original creator country."
+            type: "string"
+            example: "format: date
+                      description: The release date at original creator country.
+                      type: string
+                      "
+          opening_crawl: 
+            description: "The opening crawl text at the beginning of this film."
+            type: "string"
+            example: "description: The opening crawl text at the beginning of this film.
+                      type: string
+                      "
+          director:  
+            description: "The director of this film."
+            type: "string"
+            example: "description: The director of this film.
+                      type: string
+                      "
+          title:  
+            description: "The title of this film."
+            type: "string"
+            example: "description: The title of this film.
+                      type: string
+                      "
+          starships: 
+            description: "The starship resources featured within this film."
+            type: "array"
+            example: "description: The starship resources featured within this film.
+                      type: array
+                      "
+      $schema:
+        type: "string"
+        example: "http://json-schema.org/draft-04/schema"
+      description:
+        type: "string"
+        example: "A Star Wars film"
+      type:
+        type: "string"
+        example: "object"
+      title:
+        type: "string"
+        example: "Film"
+          
